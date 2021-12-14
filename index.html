@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width">
+	  <title>Gravity</title>
+	  <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h1>Gravity</h1>
+    <p><a href="/index.html">Back</a></p>
+    <canvas></canvas>
+    <p>
+      <input type="checkbox" id="initHeight">
+      <label for="initHeight">Circles return to inital height</label>
+      <input type="number" id="horizontalVelocity" value="0">
+      <label for="horizontalVelocity">Pick the horizontal velocity</label>
+      <select id="speed">
+        <option value="30">0.5x</option>
+        <option value="60">1x</option>
+        <option value="90">1.5x</option>
+        <option value="120">2x</option>
+      </select>
+      <label for="speed">Select Speed (0.5x speed is buggy)</label>
+    </p>
+    
+    <script src="js/graphics-library.js"></script>
+    <script src="js/random-library.js"></script>
+    <script src="js/objects.js"></script>
+    <script src="js/main.js"></script>
+    </body>
+</html>
