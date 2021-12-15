@@ -24,10 +24,13 @@ class Circle {
     this.velocityY += gravity;
     this.y += this.velocityY;
     this.x += this.velocityX;
-    if (initHeightToggle == false) {
-      this.bounce();
-    } else if (initHeightToggle == true) {
-      this.bounceInitHeight();
+    if (this.y + this.r >= cnv.height) {
+      if (initHeightToggle == false) {
+        this.bounce();
+      } else if (initHeightToggle == true) {
+        this.bounceInitHeight();
+      }
+      this.velocityX *= 0.99
     }
     if (this.x + this.r >= cnv.width) {
       this.velocityX *= -1;
@@ -39,18 +42,12 @@ class Circle {
   }
 
   bounce() {
-    if (this.y + this.r >= cnv.height) {
-      this.velocityY *= -0.9;
-      this.y = cnv.height - this.r;
-      this.velocityX *= 0.99
-    }
+    this.velocityY *= -0.9;
+    this.y = cnv.height - this.r;
   }
 
   bounceInitHeight() {
-    if (this.y + this.r >= cnv.height) {
-      this.velocityY = -1 * Math.sqrt(2 * gravity * this.maxHeight);
-      this.y = cnv.height - this.r;
-      this.velocityX *= 0.99
-    }
+    this.velocityY = -1 * Math.sqrt(2 * gravity * this.maxHeight);
+    this.y = cnv.height - this.r;
   }
 }

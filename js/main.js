@@ -29,12 +29,12 @@ speedInput.addEventListener('change', () => {
 // Create Circles
 var mouseDown;
 cnv.addEventListener('mousedown', (event) => {
-  circles.push(new Circle(event.clientX - cnv.offsetLeft, event.clientY - cnv.offsetTop, inputVelX));
+  pushCircle(event);
   if (event.button == 2) {mouseDown = true}
 })
 cnv.addEventListener('mousemove', (event) => {
   if (mouseDown == true) {
-    circles.push(new Circle(event.clientX - cnv.offsetLeft, event.clientY - cnv.offsetTop, inputVelX));
+    pushCircle(event);
   }
 })
 document.addEventListener('mouseup', () => {mouseDown = false});
@@ -69,4 +69,10 @@ function aniLoop() {
   } else if (typeof(fps) == 'number') {
     setTimeout(aniLoop, 1000 / fps);
   } 
+}
+
+function pushCircle(event) {
+  let mouseX = event.clientX - (cnv.offsetLeft - window.scrollX);
+  let mouseY = event.clientY - (cnv.offsetTop - window.scrollY);
+  circles.push(new Circle(mouseX, mouseY, inputVelX));
 }
